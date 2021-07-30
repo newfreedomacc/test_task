@@ -37,10 +37,6 @@ wait.until(EC.presence_of_element_located((By.ID , "upload")))
 upload_resume = chrome_driver.find_element_by_name('up_file')
 chrome_driver.find_element_by_css_selector('input[type=file]').send_keys('C:\\test_jpg.jpg')
 alert_Xpath = '//div[@id="up_file_name"]/label[1]'
-#тут надо бы использовать assert, чтобы мы могли поймать исключение, но нам нужно дождаться появления данного текста(точнее 
-# смены текста), я пока не придумал как конкретно это сделать.
-assert EC.text_to_be_present_in_element((By.XPATH, alert_Xpath), 
-    'ATTENTION: неверный формат файла (разрешённые форматы: doc, docx, pdf, txt, odt, rtf).')
 wait.until(EC.text_to_be_present_in_element((By.XPATH, alert_Xpath), 
     'Ошибка: неверный формат файла (разрешённые форматы: doc, docx, pdf, txt, odt, rtf).'))
 
